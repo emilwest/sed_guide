@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to sed_guide’s documentation! &mdash; sed_guide May 13 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> sed_guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to sed_guide’s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#basic-syntax">Basic syntax</a><ul>
+<li><a class="reference internal" href="#id5">‘</a></li>
+<li><a class="reference internal" href="#id10">‘</a></li>
+<li><a class="reference internal" href="#id15">‘</a></li>
+<li><a class="reference internal" href="#id20">‘</a></li>
+<li><a class="reference internal" href="#id25">}’</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pattern-flags">Pattern flags:</a></li>
+<li><a class="reference internal" href="#useful-flags">Useful flags:</a></li>
+<li><a class="reference internal" href="#regular-expressions">Regular expressions:</a></li>
+<li><a class="reference internal" href="#useful-commands">Useful commands:</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">sed_guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome to sed_guide’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-sed-guide-s-documentation">
+<h1>Welcome to sed_guide’s documentation!<a class="headerlink" href="#welcome-to-sed-guide-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+</ul>
+<p>Let file.txt be the file we want to edit.</p>
+</div>
+<div class="section" id="basic-syntax">
+<h1>Basic syntax<a class="headerlink" href="#basic-syntax" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">sed</span> <span class="pre">'s/one/ONE/'</span> <span class="pre">file.txt</span> <span class="pre">&gt;</span> <span class="pre">new.txt</span>
+<span class="pre">`</span></code></p>
+<p>Explanation:
+- <cite>s</cite>           Substitute command
+- <cite>/../../</cite>     Delimiter (slash is the default, but it can be any character, eg <cite>“|”: |..|..|</cite>)
+- <cite>one</cite>         Regular Expression Pattern Search Pattern
+- <cite>ONE</cite>         Replacement string</p>
+<blockquote>
+<div>Advanced syntax</div></blockquote>
+<hr class="docutils" />
+<ul class="simple">
+<li>More than one file can be used as input:</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">sed</span> <span class="pre">'s/^#.*//'</span>&#160; <span class="pre">f1</span> <span class="pre">f2</span> <span class="pre">f3</span>
+<span class="pre">`</span></code>
+- /PATTERN/ is an adress that can be used to give commands to the matching occurences.
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">sed</span> <span class="pre">'/PATTERN/</span> <span class="pre">p'</span> <span class="pre">file</span>
+<span class="pre">`</span></code>
+- In a bash-script, a quote can cover several commands (instead of using the -e flag)
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">#!/bin/bash</span>
+<span class="pre">sed</span> <span class="pre">'</span>
+<span class="pre">s/a/A/g</span>
+<span class="pre">s/e/E/g</span>
+<span class="pre">s/i/I/g</span>
+<span class="pre">s/o/O/g</span>
+<span class="pre">s/u/U/g'</span>&#160; <span class="pre">&lt;old</span> <span class="pre">&gt;new</span>
+<span class="pre">`</span></code>
+- You can create a sed interpreter script. Can be run with for example: <cite>mySedScript &lt;old &gt;new</cite> (make it executable with <cite>chmod +x</cite> first)
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">#!/bin/sed</span> <span class="pre">-f</span>
+<span class="pre">s/a/A/g</span>
+<span class="pre">s/e/E/g</span>
+<span class="pre">`</span></code>
+- Pass agruments inside a shell script:
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">#!/bin/sh</span>
+<span class="pre">sed</span> <span class="pre">-n</span> <span class="pre">'s/'&quot;$1&quot;'/&amp;/p'</span>
+<span class="pre">`</span></code>
+- Restrict search to a specific line number (e.g. line 3):
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">sed</span> <span class="pre">'3</span> <span class="pre">s/[0-9][0-9]*//'</span> <span class="pre">&lt;file</span> <span class="pre">&gt;new</span>
+<span class="pre">`</span></code>
+### Patterns:
+- deletes all lines beginning with #
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">sed</span> <span class="pre">'/^#/</span> <span class="pre">s/[0-9][0-9]*//'</span>
+<span class="pre">`</span></code>
+- To use a comma instead of a slash, use:
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">sed</span> <span class="pre">'\,^#,</span> <span class="pre">s/[0-9][0-9]*//'</span>
+<span class="pre">`</span></code>
+- Restrict a substitution to the first 100 lines:
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">sed</span> <span class="pre">'1,100</span> <span class="pre">s/A/a/'</span>
+<span class="pre">`</span></code>
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">sed</span> <span class="pre">'101,$</span> <span class="pre">s/A/a/'</span> <span class="pre">$=to</span> <span class="pre">the</span> <span class="pre">end</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">file</span>
+<span class="pre">`</span></code>
+- Ranges by patterns:
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">sed</span> <span class="pre">'/start/,/stop/</span> <span class="pre">s/#.*//'</span> <span class="pre">remove</span> <span class="pre">all</span> <span class="pre">lines</span> <span class="pre">starting</span> <span class="pre">with</span> <span class="pre">#</span> <span class="pre">between</span> <span class="pre">start</span> <span class="pre">and</span> <span class="pre">stop</span>
+<span class="pre">`</span></code></p>
+<dl class="docutils">
+<dt>Grouping:</dt>
+<dd>If you wanted to restrict the removal to lines between special “begin” and “end” key words, you could use:
+<a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>bash</dd>
+</dl>
+<p>#!/bin/sh
+# This is a Bourne shell script that removes #-type comments
+# between ‘begin’ and ‘end’ words.
+sed -n ‘</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>/begin/,/end/ {</dt>
+<dd>s/#.*//
+s/[ ^I]*$//
+/^$/ d
+p</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<div class="section" id="id5">
+<h2>‘<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Can be nested, eg first 100 commands:</li>
+</ul>
+<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a>bash
+#!/bin/sh
+# This is a Bourne shell script that removes #-type comments
+# between ‘begin’ and ‘end’ words.
+sed -n ‘</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>1,100 {</dt>
+<dd><dl class="first docutils">
+<dt>/begin/,/end/ {</dt>
+<dd>s/#.*//
+s/[ ^I]*$//
+/^$/ d
+p</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>‘<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can place a “!” before a set of curly braces. This inverts the address, which removes comments from all lines except those between the two reserved words:</li>
+</ul>
+<p><a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a>bash
+#!/bin/sh
+sed ‘</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>/begin/,/end/ !{</dt>
+<dd>s/#.*//
+s/[ ^I]*$//
+/^$/ d
+p</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div>
+<div class="section" id="id15">
+<h2>‘<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>If you did not want to make any changes where the word “begin” occurred, you could simple add a new condition to skip over that line:</li>
+</ul>
+<p><a href="#id16"><span class="problematic" id="id17">``</span></a><a href="#id18"><span class="problematic" id="id19">`</span></a>bash
+#!/bin/sh
+sed ‘</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>/begin/,/end/ {</dt>
+<dd>/begin/n # skip over the line that has “begin” on it
+s/old/new/</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</div>
+<div class="section" id="id20">
+<h2>‘<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<p>You can use the curly braces to delete the line having the “INCLUDE” command on it:
+<a href="#id21"><span class="problematic" id="id22">``</span></a><a href="#id23"><span class="problematic" id="id24">`</span></a>bash
+#!/bin/sh
+sed ‘/INCLUDE/ {</p>
+<blockquote>
+<div>r file
+d</div></blockquote>
+</div>
+<div class="section" id="id25">
+<h2>}’<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<p>The order of the delete command “d” and the read file command “r” is important. The first is the “r” command writes the file to the output stream. The file is not inserted into the pattern space, and therefore cannot be modified by any command. Therefore the delete command does not affect the data read from the file.</p>
+<p>“d” command deletes the current data in the pattern space and aborts every further action. Eg needs to be the last command.</p>
+<p>### Adding, Changing, Inserting new lines</p>
+<ul class="simple">
+<li>This example will add a line after every line with “WORD:”</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">#!/bin/sh</span>
+<span class="pre">sed</span> <span class="pre">'</span>
+<span class="pre">/WORD/</span> <span class="pre">a\</span>
+<span class="pre">Add</span> <span class="pre">this</span> <span class="pre">line</span> <span class="pre">after</span> <span class="pre">every</span> <span class="pre">line</span> <span class="pre">with</span> <span class="pre">WORD</span>
+<span class="pre">'</span>
+<span class="pre">`</span></code>
+- You can insert a new line before the pattern with the “i” command:
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">#!/bin/sh</span>
+<span class="pre">sed</span> <span class="pre">'</span>
+<span class="pre">/WORD/</span> <span class="pre">i\</span>
+<span class="pre">Add</span> <span class="pre">this</span> <span class="pre">line</span> <span class="pre">before</span> <span class="pre">every</span> <span class="pre">line</span> <span class="pre">with</span> <span class="pre">WORD</span>
+<span class="pre">'</span>
+<span class="pre">`</span></code>
+- You can change the current line with a new line.
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">#!/bin/sh</span>
+<span class="pre">sed</span> <span class="pre">'</span>
+<span class="pre">/WORD/</span> <span class="pre">c\</span>
+<span class="pre">Replace</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">line</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">line</span>
+<span class="pre">'</span>
+<span class="pre">`</span></code>
+- Can be combined with curly braces:
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">#!/bin/sh</span>
+<span class="pre">sed</span> <span class="pre">'</span>
+<span class="pre">/WORD/</span> <span class="pre">{</span>
+<span class="pre">i\</span>
+<span class="pre">Add</span> <span class="pre">this</span> <span class="pre">line</span> <span class="pre">before</span>
+<span class="pre">a\</span>
+<span class="pre">Add</span> <span class="pre">this</span> <span class="pre">line</span> <span class="pre">after</span>
+<span class="pre">c\</span>
+<span class="pre">Change</span> <span class="pre">the</span> <span class="pre">line</span> <span class="pre">to</span> <span class="pre">this</span> <span class="pre">one</span>
+<span class="pre">}'</span>
+<span class="pre">`</span></code>
+- Add more than one line:
+<code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">#!/bin/sh</span>
+<span class="pre">sed</span> <span class="pre">'</span>
+<span class="pre">/WORD/</span> <span class="pre">a\</span>
+<span class="pre">Add</span> <span class="pre">this</span> <span class="pre">line\</span>
+<span class="pre">This</span> <span class="pre">line\</span>
+<span class="pre">And</span> <span class="pre">this</span> <span class="pre">line</span>
+<span class="pre">'</span>
+<span class="pre">`</span></code></p>
+<ul class="simple">
+<li>Multi-line patterns</li>
+<li>if <cite>/</cite> is used in the regular expression it needs to be “escaped” with <cite>“”</cite>: <cite>/</cite></li>
+<li><cite>&amp;</cite> : matches the pattern found eg: <cite>sed ‘s/[a-z]*/(&amp;)/’ file.txt</cite></li>
+</ul>
+</div>
+</div>
+<div class="section" id="pattern-flags">
+<h1>Pattern flags:<a class="headerlink" href="#pattern-flags" title="Permalink to this headline">¶</a></h1>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">/g</span></kbd></td>
+<td>Global replacement. Matches all occurences on a line, not just the first.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">/p</span></kbd></td>
+<td>Prints each match on a line</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">/w</span></kbd></td>
+<td>Write to a file. Eg: <a href="#id26"><span class="problematic" id="id27">`</span></a>sed -n ‘s/^[0-9]*[02468] /&amp;/w even’ &lt;file ` writes to a file named “even” (-n=no print). You can also have ten files open with one instance of sed. Useful for logging, debuging or storing results in temporary files.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">/I</span></kbd></td>
+<td>Ignore case. This will for example match abc, aBc, ABC, AbC, etc.</td></tr>
+</tbody>
+</table>
+<p>d  delete the matched pattern, eg: <cite>sed ‘11,$ d’ &lt;file ` deletes all lines exept lines 1-10.
+!  reverses the restriction, eg: `sed -n ‘/match/ !p’ &lt;/tmp/b</cite> matches all lines that doesn’t contain the pattern.
+q  quits search when condition finished, eg reaches line 11: <cite>sed ‘11 q’</cite>
+r  reads in a file. Eg: <cite>sed ‘/INCLUDE/ r file.txt’ &lt;in &gt;out</cite> will insert file.txt after the line with the word INCLUDE.
+It is possible to combine substitution flags. E.g: <cite>sed -n ‘s/a/A/2pw /tmp/file’ &lt;old &gt;new</cite> (note that w have to be the last flag).</p>
+</div>
+<div class="section" id="useful-flags">
+<h1>Useful flags:<a class="headerlink" href="#useful-flags" title="Permalink to this headline">¶</a></h1>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-i</span></kbd></td>
+<td>save changes directly to file.txt (-i=in place) (only use this if you’ve tested first that the output is ok)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span></kbd></td>
+<td>extended regular expressions, for example the + symbol (-E on mac)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-e</span></kbd></td>
+<td>used to add multiple commands. E.g: <cite>sed -e ‘s/a/A/’ -e ‘s/b/B/’ &lt;old &gt;new</cite></td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-f</span></kbd></td>
+<td>use a sed script file, eg: <cite>sed -f sedscript &lt;old &gt;new</cite></td></tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>TODO</li>
+</ul>
+</div>
+<div class="section" id="regular-expressions">
+<h1>Regular expressions:<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>Anchors:</dt>
+<dd><cite>^ $</cite> beginning and end of line</dd>
+<dt>Counters:</dt>
+<dd><cite>+</cite> one or more
+<cite>*</cite> zero or more
+<cite>?</cite>  zero or one
+<cite>{n,m}</cite> at least n, max m</dd>
+<dt>Disjunction:</dt>
+<dd><cite>.</cite> any single character
+<cite>[]</cite> any character(s) within the brackets</dd>
+<dt>Combination of above:</dt>
+<dd><cite>.*</cite> any character, zero or more</dd>
+<dt>Precedence operators:</dt>
+<dd><cite>()</cite> for capturing a group. referenced by 1 2 3 (up to 9)  in the replacement string</dd>
+<dt>Special characters:</dt>
+<dd>s  whitespace characters
+S  non-whitespace characters
+w Match a “word” character (alphanumeric plus “_”)
+W Match a non-word character
+d Match a digit character
+D Match a non-digit character
+b Match a word boundary
+B Match a non-(word boundary)
+A Match only at beginning of string
+Z Match only at end of string, or before newline at the end
+z Match only at end of string
+G Match only where previous m//g left off (works only with /g)``*</dd>
+<dt>More special characters:</dt>
+<dd>t tab (HT, TAB)
+n newline (LF, NL)
+r return (CR)
+f form feed (FF)
+a alarm (bell) (BEL)
+e escape (think troff) (ESC)
+033 octal char (think of a PDP-11)
+x1B hex char
+c[ control char
+l lowercase next char (think vi)
+u uppercase next char (think vi)
+L lowercase till E (think vi)
+U uppercase till E (think vi)
+E end case modification (think vi)
+Q quote (disable) pattern metacharacters till E</dd>
+</dl>
+</div>
+<div class="section" id="useful-commands">
+<h1>Useful commands:<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h1>
+<p>Remove lines with whitespace characters:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">sed</span> <span class="pre">&quot;/^\s*$/d&quot;</span> <span class="pre">file.txt</span>
+<span class="pre">`</span></code></p>
+<p>Sources:
+<a class="reference external" href="http://www.grymoire.com/Unix/Sed.html">http://www.grymoire.com/Unix/Sed.html</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Emil Westin.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'May 13',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
